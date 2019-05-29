@@ -22,7 +22,7 @@ router.post('/employees',
 					departmentEmployeeModel.insert(
 						resultId,
 						request.body.department,
-						new Date(),
+						request.body.hireDate,
 						"9999-01-01",
 						function DoneInsertingRelationship(err, relationShipId){
 							if (err){
@@ -30,7 +30,7 @@ router.post('/employees',
 			                    console.log(err);
 			                    response.write("Error Inserting");
 							}else{
-								response.json({ insertedId: resultId });
+								response.json({ insertedEmployeeId: resultId, insertedRelationship: relationShipId });
 							}
 						});
                 }
