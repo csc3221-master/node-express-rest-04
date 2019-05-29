@@ -1,10 +1,10 @@
 var db = require('../db');
 
-exports.insert = function InsertHandler(birthDate, firstName, lastName, gender, hireDate, done){
-    var values = [new Date(birthDate).toISOString().slice(0, 19).replace('T', ' '), firstName, lastName, gender, new Date(hireDate).toISOString().slice(0, 19).replace('T', ' ')];
+exports.insert = function InsertHandler(employeeId, birthDate, firstName, lastName, gender, hireDate, done){
+    var values = [employeeId, new Date(birthDate).toISOString().slice(0, 19).replace('T', ' '), firstName, lastName, gender, new Date(hireDate).toISOString().slice(0, 19).replace('T', ' ')];
     db.get().query(
-        'INSERT INTO employees (birth_date, first_name, last_name, gender, hire_date) ' +
-        'VALUES (?,?,?,?,?)', values, function InsertQueryHandler(err, result){
+        'INSERT INTO employees (emp_no, birth_date, first_name, last_name, gender, hire_date) ' +
+        'VALUES (?,?,?,?,?,?)', values, function InsertQueryHandler(err, result){
             if (err)
                 return done(err);
             done(null, result.insertId);

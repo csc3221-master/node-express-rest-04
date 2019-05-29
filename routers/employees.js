@@ -8,7 +8,8 @@ router.post('/employees',
 	// birthDate, firstName, lastName, gender, hireDate, department
 	function EmployeesPostHandler(request, response){
         employeeModel.insert(
-            request.body.birthDate,
+			request.body.employeeId,
+			request.body.birthDate,
             request.body.firstName,
             request.body.lastName,
             request.body.gender,
