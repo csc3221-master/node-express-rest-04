@@ -2,10 +2,10 @@ var express = require('express');       // imports the express library
 var router = express.Router();          // Router object for routes
 
 var employeeModel = require('../models/employees');
-
+var departmentEmployeeModel = require('../models/departments_employees');
 
 router.post('/employees',
-	// birthDate, firstName, lastName, gender, hireDate
+	// birthDate, firstName, lastName, gender, hireDate, department
 	function EmployeesPostHandler(request, response){
         employeeModel.insert(
             request.body.birthDate,
@@ -19,9 +19,22 @@ router.post('/employees',
                     console.log(err);
                     response.write("Error Inserting");
                 }else{
-                    response.json({ insertedId: resultId });
+					departmentEmployeeModel.insert(
+						resultId,
+						request.body.department,
+						new Date(),
+						"9999-01-01",
+						function DoneInsertingRelationship(err, relationShipId){
+							if (err){
+								console.log("Some error inserting into employee-department relationship");
+			                    console.log(err);
+			                    response.write("Error Inserting");
+							}else{
+								response.json({ insertedId: resultId });
+							}
+						});
                 }
-            } );
+            });
 });
 
 router.get('/employees', function EmployeesGetHandler(request, response){
