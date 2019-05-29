@@ -1,7 +1,7 @@
 var express = require('express');       // imports the express library
 var router = express.Router();          // Router object for routes
 
-var departmentModel = require('./models/departments');
+var departmentModel = require('../models/departments');
 
 router.get('/departments', function DepartmentsGetHandler(request, response){
     departmentModel.getAll(function DoneGettingAll(err, result, fields){

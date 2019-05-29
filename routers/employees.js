@@ -1,7 +1,7 @@
 var express = require('express');       // imports the express library
 var router = express.Router();          // Router object for routes
 
-var employeeModel = require('./models/employees');
+var employeeModel = require('../models/employees');
 
 
 router.post('/employees',
