@@ -15,7 +15,7 @@ function CreateSelect(departments){
 	//		...
 	// </select>
 	var retVal = "";
-	retVal += '<select id="department" name="department"> \n';
+	retVal += '<select id="department" name="department" class="form-control"> \n';
 	for (var index in departments){
 		retVal += `<option value="${departments[index].dept_no}">${departments[index].dept_name}</option>`;
 	}
