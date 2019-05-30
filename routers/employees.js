@@ -21,7 +21,7 @@ router.post('/employees',
                     response.write("Error Inserting");
                 }else{
 					departmentEmployeeModel.insert(
-						resultId,
+						request.body.employeeId,
 						request.body.department,
 						request.body.hireDate,
 						"9999-01-01",
