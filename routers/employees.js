@@ -14,7 +14,7 @@ router.post('/employees',
             request.body.lastName,
             request.body.gender,
             request.body.hireDate,
-            function DoneInserting(err, resultId){
+            function DoneInserting(err, resultEmployee){
                 if (err){
                     console.log("Some error inserting");
                     console.log(err);
@@ -25,13 +25,13 @@ router.post('/employees',
 						request.body.department,
 						request.body.hireDate,
 						"9999-01-01",
-						function DoneInsertingRelationship(err, relationShipId){
+						function DoneInsertingRelationship(err, resultRelationship){
 							if (err){
 								console.log("Some error inserting into employee-department relationship");
 			                    console.log(err);
 			                    response.write("Error Inserting");
 							}else{
-								response.json({ insertedEmployeeId: resultId, insertedRelationship: relationShipId });
+								response.json({ insertedEmployee: resultEmployee, insertedRelationship: resultRelationship });
 							}
 						});
                 }

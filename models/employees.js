@@ -7,7 +7,7 @@ exports.insert = function InsertHandler(employeeId, birthDate, firstName, lastNa
         'VALUES (?,?,?,?,?,?)', values, function InsertQueryHandler(err, result){
             if (err)
                 return done(err);
-            done(null, result.insertId);
+            done(null, result);
         });
 }
 

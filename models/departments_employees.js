@@ -7,6 +7,6 @@ exports.insert = function InsertHandler(employeeId, departmentId, fromDate, toDa
         'VALUES (?,?,?,?)', values, function InsertQueryHandler(err, result){
             if (err)
                 return done(err);
-            done(null, result.insertId);
+            done(null, result);
         });
 }
